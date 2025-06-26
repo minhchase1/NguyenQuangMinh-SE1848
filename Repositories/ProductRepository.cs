@@ -24,7 +24,16 @@ namespace Repositories
 
         public List<Product> GetProducts()
         {
-            return productDAO.GetProducts();
+            var products = productDAO.GetProducts();
+            
+            // Populate Category navigation property
+            var categoryRepository = new CategoryRepository();
+            foreach (var product in products)
+            {
+                product.Category = categoryRepository.GetCategoryByID(product.CategoryID);
+            }
+            
+            return products;
         }
         
         public Product GetProductByID(int productID)
@@ -49,12 +58,30 @@ namespace Repositories
         
         public List<Product> SearchProducts(string searchTerm)
         {
-            return productDAO.SearchProducts(searchTerm);
+            var products = productDAO.SearchProducts(searchTerm);
+            
+            // Populate Category navigation property
+            var categoryRepository = new CategoryRepository();
+            foreach (var product in products)
+            {
+                product.Category = categoryRepository.GetCategoryByID(product.CategoryID);
+            }
+            
+            return products;
         }
         
         public List<Product> GetProductsByCategory(int categoryID)
         {
-            return productDAO.GetProductsByCategory(categoryID);
+            var products = productDAO.GetProductsByCategory(categoryID);
+            
+            // Populate Category navigation property
+            var categoryRepository = new CategoryRepository();
+            foreach (var product in products)
+            {
+                product.Category = categoryRepository.GetCategoryByID(product.CategoryID);
+            }
+            
+            return products;
         }
     }
 } 

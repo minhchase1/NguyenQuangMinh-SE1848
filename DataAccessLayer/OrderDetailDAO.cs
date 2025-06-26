@@ -61,7 +61,7 @@ namespace DataAccessLayer
                     if (product != null)
                     {
                         var quantity = random.Next(1, 6);
-                        var discount = (float)(random.NextDouble() * 0.2); // 0-20% discount
+                        var discount = (decimal)(random.NextDouble() * 0.2); // 0-20% discount
                         
                         orderDetails.Add(new OrderDetail 
                         { 

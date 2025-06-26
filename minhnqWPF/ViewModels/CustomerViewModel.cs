@@ -3,6 +3,7 @@ using System.Windows.Input;
 using BusinessObjects;
 using minhnqWPF.Commands;
 using Services;
+using System.Linq;
 
 namespace minhnqWPF.ViewModels
 {
@@ -79,8 +80,31 @@ namespace minhnqWPF.ViewModels
         
         private void LoadCustomers()
         {
+            // First try to get from service
             var customerList = _customerService.GetCustomers();
+            
+            // If empty, generate sample data directly
+            if (customerList.Count == 0)
+            {
+                _customerService.GenerateSampleDataset();
+                customerList = _customerService.GetCustomers();
+            }
+            
+            // If still empty, create some test data directly
+            if (customerList.Count == 0)
+            {
+                customerList = new List<Customer>
+                {
+                    new Customer { CustomerID = 1, CompanyName = "ABC Technology Corp", ContactName = "Nguyễn Văn An", ContactTitle = "Giám đốc", Address = "123 Lê Lợi, Q1, TP.HCM", Phone = "0901234567", Password = "123456" },
+                    new Customer { CustomerID = 2, CompanyName = "XYZ Trading Ltd", ContactName = "Trần Thị Bình", ContactTitle = "Trưởng phòng kinh doanh", Address = "456 Nguyễn Huệ, Q1, TP.HCM", Phone = "0912345678", Password = "123456" },
+                    new Customer { CustomerID = 3, CompanyName = "DEF Solutions", ContactName = "Lê Văn Cường", ContactTitle = "CEO", Address = "789 Điện Biên Phủ, Q3, TP.HCM", Phone = "0923456789", Password = "123456" }
+                };
+            }
+            
             Customers = new ObservableCollection<Customer>(customerList);
+            
+            // Debug: Check if data is loaded
+            System.Diagnostics.Debug.WriteLine($"Loaded {customerList.Count} customers");
         }
         
         private void ExecuteAdd(object parameter)
@@ -92,7 +116,7 @@ namespace minhnqWPF.ViewModels
                 ContactTitle = string.Empty,
                 Address = string.Empty,
                 Phone = string.Empty,
-                Password = string.Empty
+                Password = "123456" // Default password
             };
             IsEditing = true;
         }

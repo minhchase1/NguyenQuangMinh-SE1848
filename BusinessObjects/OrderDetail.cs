@@ -12,14 +12,17 @@ namespace BusinessObjects
         public int ProductID { get; set; }
         public decimal UnitPrice { get; set; }
         public int Quantity { get; set; }
-        public float Discount { get; set; }
+        public decimal Discount { get; set; }
         
         // Navigation properties
         public Product? Product { get; set; }
         
+        // Computed property for DataGrid binding
+        public decimal Total => GetTotal();
+        
         public decimal GetTotal()
         {
-            return UnitPrice * Quantity * (1 - (decimal)Discount);
+            return UnitPrice * Quantity * (1 - Discount);
         }
         
         public override string ToString()

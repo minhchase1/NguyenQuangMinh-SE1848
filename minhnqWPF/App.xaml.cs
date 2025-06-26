@@ -36,6 +36,10 @@ public partial class App : Application
         categoryService.GenerateSampleDataset();
         employeeService.GenerateSampleDataset();
         orderService.GenerateSampleDataset();
+        
+        // Debug: Check if data was initialized
+        var customers = customerService.GetCustomers();
+        System.Diagnostics.Debug.WriteLine($"App startup: Initialized {customers.Count} customers");
     }
 }
 

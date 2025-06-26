@@ -3,6 +3,7 @@ using System.Windows.Input;
 using BusinessObjects;
 using minhnqWPF.Commands;
 using Services;
+using System.Collections.Generic;
 
 namespace minhnqWPF.ViewModels
 {
@@ -62,7 +63,14 @@ namespace minhnqWPF.ViewModels
         public Category? SelectedCategory
         {
             get => _selectedCategory;
-            set => SetProperty(ref _selectedCategory, value);
+            set 
+            {
+                if (SetProperty(ref _selectedCategory, value))
+                {
+                    // Auto-filter when category selection changes
+                    ExecuteFilterByCategory(null!);
+                }
+            }
         }
         
         public string SearchText
@@ -105,7 +113,13 @@ namespace minhnqWPF.ViewModels
         private void LoadCategories()
         {
             var categoryList = _categoryService.GetCategories();
-            Categories = new ObservableCollection<Category>(categoryList);
+            
+            // Add "All Categories" option at the beginning
+            var allCategories = new List<Category>();
+            allCategories.Add(new Category { CategoryID = 0, CategoryName = "All Categories", Description = "Show all products" });
+            allCategories.AddRange(categoryList);
+            
+            Categories = new ObservableCollection<Category>(allCategories);
         }
         
         private void ExecuteAdd(object parameter)
@@ -216,13 +230,14 @@ namespace minhnqWPF.ViewModels
         
         private void ExecuteFilterByCategory(object parameter)
         {
-            if (SelectedCategory != null)
+            if (SelectedCategory != null && SelectedCategory.CategoryID > 0)
             {
                 var results = _productService.GetProductsByCategory(SelectedCategory.CategoryID);
                 Products = new ObservableCollection<Product>(results);
             }
             else
             {
+                // Show all products if no category selected or "All Categories" selected
                 LoadProducts();
             }
         }

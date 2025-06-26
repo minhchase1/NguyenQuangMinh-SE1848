@@ -13,6 +13,9 @@ namespace BusinessObjects
         public int CategoryID { get; set; }
         public decimal UnitPrice { get; set; }
         public int UnitsInStock { get; set; }
+        
+        // Navigation property
+        public Category? Category { get; set; }
 
         public override string ToString()
         {
