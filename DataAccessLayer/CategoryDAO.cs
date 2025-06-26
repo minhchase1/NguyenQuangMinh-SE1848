@@ -33,11 +33,14 @@ namespace DataAccessLayer
         public void GenerateSampleDataset()
         {
             categories.Clear();
-            categories.Add(new Category { CategoryID = 1, CategoryName = "Computers", Description = "Desktop and laptop computers" });
-            categories.Add(new Category { CategoryID = 2, CategoryName = "Mobile Devices", Description = "Phones and tablets" });
-            categories.Add(new Category { CategoryID = 3, CategoryName = "Accessories", Description = "Computer and mobile accessories" });
-            categories.Add(new Category { CategoryID = 4, CategoryName = "Software", Description = "Applications and games" });
-            categories.Add(new Category { CategoryID = 5, CategoryName = "Networking", Description = "Routers, switches and networking equipment" });
+            categories.Add(new Category { CategoryID = 1, CategoryName = "Máy tính", Description = "Laptop, Desktop và linh kiện máy tính" });
+            categories.Add(new Category { CategoryID = 2, CategoryName = "Thiết bị di động", Description = "Điện thoại, máy tính bảng và phụ kiện" });
+            categories.Add(new Category { CategoryID = 3, CategoryName = "Phụ kiện", Description = "Chuột, bàn phím, tai nghe, màn hình" });
+            categories.Add(new Category { CategoryID = 4, CategoryName = "Phần mềm", Description = "Hệ điều hành, ứng dụng văn phòng, phần mềm chuyên dụng" });
+            categories.Add(new Category { CategoryID = 5, CategoryName = "Thiết bị mạng", Description = "Router, Switch, Access Point và thiết bị mạng" });
+            categories.Add(new Category { CategoryID = 6, CategoryName = "Gaming", Description = "Thiết bị chơi game, console, phụ kiện gaming" });
+            categories.Add(new Category { CategoryID = 7, CategoryName = "Lưu trữ", Description = "Ổ cứng, SSD, USB, thẻ nhớ" });
+            categories.Add(new Category { CategoryID = 8, CategoryName = "In ấn", Description = "Máy in, máy scan, máy photocopy" });
         }
 
         public List<Category> GetCategories()

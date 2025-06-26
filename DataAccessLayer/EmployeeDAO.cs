@@ -33,11 +33,31 @@ namespace DataAccessLayer
         public void GenerateSampleDataset()
         {
             employees.Clear();
-            employees.Add(new Employee { EmployeeID = 1, Name = "John Smith", UserName = "john", Password = "pass123", JobTitle = "Sales Manager" });
-            employees.Add(new Employee { EmployeeID = 2, Name = "Jane Doe", UserName = "jane", Password = "pass456", JobTitle = "Sales Representative" });
-            employees.Add(new Employee { EmployeeID = 3, Name = "Michael Johnson", UserName = "michael", Password = "pass789", JobTitle = "Sales Representative" });
-            employees.Add(new Employee { EmployeeID = 4, Name = "Emily Williams", UserName = "emily", Password = "pass012", JobTitle = "Sales Assistant" });
-            employees.Add(new Employee { EmployeeID = 5, Name = "David Brown", UserName = "david", Password = "pass345", JobTitle = "Sales Assistant" });
+            
+            // Admin và Management
+            employees.Add(new Employee { EmployeeID = 1, Name = "Nguyễn Văn Admin", UserName = "admin", Password = "admin123", JobTitle = "Quản trị hệ thống" });
+            employees.Add(new Employee { EmployeeID = 2, Name = "Trần Thị Manager", UserName = "manager", Password = "manager123", JobTitle = "Quản lý bán hàng" });
+            
+            // Sales Team
+            employees.Add(new Employee { EmployeeID = 3, Name = "Lê Văn Hùng", UserName = "hunglv", Password = "123456", JobTitle = "Nhân viên bán hàng" });
+            employees.Add(new Employee { EmployeeID = 4, Name = "Phạm Thị Linh", UserName = "linhpt", Password = "123456", JobTitle = "Nhân viên bán hàng" });
+            employees.Add(new Employee { EmployeeID = 5, Name = "Hoàng Văn Minh", UserName = "minhhv", Password = "123456", JobTitle = "Nhân viên bán hàng" });
+            employees.Add(new Employee { EmployeeID = 6, Name = "Vũ Thị Nga", UserName = "ngavt", Password = "123456", JobTitle = "Nhân viên bán hàng" });
+            employees.Add(new Employee { EmployeeID = 7, Name = "Đỗ Văn Phong", UserName = "phongdv", Password = "123456", JobTitle = "Nhân viên bán hàng" });
+            
+            // Support Team
+            employees.Add(new Employee { EmployeeID = 8, Name = "Bùi Thị Quỳnh", UserName = "quynhbt", Password = "123456", JobTitle = "Hỗ trợ khách hàng" });
+            employees.Add(new Employee { EmployeeID = 9, Name = "Ngô Văn Rồng", UserName = "rongnv", Password = "123456", JobTitle = "Hỗ trợ kỹ thuật" });
+            employees.Add(new Employee { EmployeeID = 10, Name = "Lý Thị Sương", UserName = "suonglt", Password = "123456", JobTitle = "Hỗ trợ khách hàng" });
+            
+            // Warehouse Team
+            employees.Add(new Employee { EmployeeID = 11, Name = "Trịnh Văn Tài", UserName = "taitv", Password = "123456", JobTitle = "Quản lý kho" });
+            employees.Add(new Employee { EmployeeID = 12, Name = "Đặng Thị Uyên", UserName = "uyendt", Password = "123456", JobTitle = "Nhân viên kho" });
+            employees.Add(new Employee { EmployeeID = 13, Name = "Phan Văn Việt", UserName = "vietpv", Password = "123456", JobTitle = "Nhân viên kho" });
+            
+            // Accounting Team
+            employees.Add(new Employee { EmployeeID = 14, Name = "Cao Thị Xuân", UserName = "xuanct", Password = "123456", JobTitle = "Kế toán" });
+            employees.Add(new Employee { EmployeeID = 15, Name = "Lưu Văn Yên", UserName = "yenlv", Password = "123456", JobTitle = "Kế toán trưởng" });
         }
 
         public List<Employee> GetEmployees()

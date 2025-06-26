@@ -38,17 +38,42 @@ namespace DataAccessLayer
             productDAO.GenerateSampleDataset();
             
             orderDetails.Clear();
-            orderDetails.Add(new OrderDetail { OrderID = 1, ProductID = 1, UnitPrice = 999.99m, Quantity = 1, Discount = 0.05f });
-            orderDetails.Add(new OrderDetail { OrderID = 1, ProductID = 5, UnitPrice = 99.99m, Quantity = 2, Discount = 0f });
-            orderDetails.Add(new OrderDetail { OrderID = 2, ProductID = 2, UnitPrice = 799.99m, Quantity = 1, Discount = 0.1f });
-            orderDetails.Add(new OrderDetail { OrderID = 3, ProductID = 3, UnitPrice = 299.99m, Quantity = 2, Discount = 0f });
-            orderDetails.Add(new OrderDetail { OrderID = 4, ProductID = 4, UnitPrice = 699.99m, Quantity = 1, Discount = 0.05f });
-            orderDetails.Add(new OrderDetail { OrderID = 5, ProductID = 5, UnitPrice = 99.99m, Quantity = 3, Discount = 0.15f });
+            var random = new Random();
             
-            // Set navigation properties
-            foreach (var detail in orderDetails)
+            // Tạo chi tiết đơn hàng cho 25 orders
+            for (int orderID = 1; orderID <= 25; orderID++)
             {
-                detail.Product = productDAO.GetProductByID(detail.ProductID);
+                // Mỗi đơn hàng có 1-4 sản phẩm
+                int numProducts = random.Next(1, 5);
+                var usedProducts = new HashSet<int>();
+                
+                for (int j = 0; j < numProducts; j++)
+                {
+                    int productID;
+                    do
+                    {
+                        productID = random.Next(1, 29); // Products 1-28
+                    } while (usedProducts.Contains(productID));
+                    
+                    usedProducts.Add(productID);
+                    
+                    var product = productDAO.GetProductByID(productID);
+                    if (product != null)
+                    {
+                        var quantity = random.Next(1, 6);
+                        var discount = (float)(random.NextDouble() * 0.2); // 0-20% discount
+                        
+                        orderDetails.Add(new OrderDetail 
+                        { 
+                            OrderID = orderID, 
+                            ProductID = productID, 
+                            UnitPrice = product.UnitPrice, 
+                            Quantity = quantity, 
+                            Discount = discount,
+                            Product = product
+                        });
+                    }
+                }
             }
         }
 

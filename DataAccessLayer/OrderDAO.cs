@@ -35,33 +35,36 @@ namespace DataAccessLayer
 
         public void GenerateSampleDataset()
         {
-            // First, make sure we have employees to reference
+            // First, make sure we have employees and customers to reference
             employeeDAO.GenerateSampleDataset();
             customerDAO.GenerateSampleDataset();
             
             orders.Clear();
             
-            // Create orders with properly initialized Employee objects
-            for (int i = 1; i <= 5; i++)
+            // Tạo nhiều đơn hàng ảo với thời gian khác nhau
+            var random = new Random();
+            
+            for (int i = 1; i <= 25; i++)
             {
-                var employee = employeeDAO.GetEmployeeByID(i);
-                if (employee != null)
+                var customerID = random.Next(1, 16); // 1-15 customers
+                var employeeID = random.Next(3, 8);  // Sales employees (3-7)
+                var daysAgo = random.Next(1, 180);   // Orders from last 6 months
+                
+                var employee = employeeDAO.GetEmployeeByID(employeeID);
+                var customer = customerDAO.GetCustomerByID(customerID);
+                
+                if (employee != null && customer != null)
                 {
                     orders.Add(new Order { 
                         OrderID = i, 
-                        CustomerID = i, 
-                        EmployeeID = i, 
-                        OrderDate = DateTime.Now.AddDays(-i), 
+                        CustomerID = customerID, 
+                        EmployeeID = employeeID, 
+                        OrderDate = DateTime.Now.AddDays(-daysAgo), 
                         Employee = employee,
+                        Customer = customer,
                         OrderDetails = new List<OrderDetail>() 
                     });
                 }
-            }
-            
-            // Set navigation properties for customers
-            foreach (var order in orders)
-            {
-                order.Customer = customerDAO.GetCustomerByID(order.CustomerID);
             }
         }
 

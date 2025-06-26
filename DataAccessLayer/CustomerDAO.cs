@@ -33,11 +33,23 @@ namespace DataAccessLayer
         public void GenerateSampleDataset()
         {
             customers.Clear();
-            customers.Add(new Customer { CustomerID = 1, CompanyName = "ABC Corp", ContactName = "John Doe", ContactTitle = "Manager", Address = "123 Elm St", Phone = "123-456-7890", Password = "password1" });
-            customers.Add(new Customer { CustomerID = 2, CompanyName = "XYZ Ltd", ContactName = "Alice Smith", ContactTitle = "Director", Address = "456 Oak St", Phone = "987-654-3210", Password = "password2" });
-            customers.Add(new Customer { CustomerID = 3, CompanyName = "123 Industries", ContactName = "Charlie Brown", ContactTitle = "CEO", Address = "789 Pine St", Phone = "555-555-5555", Password = "password3" });
-            customers.Add(new Customer { CustomerID = 4, CompanyName = "Tech Solutions", ContactName = "Diana Prince", ContactTitle = "CFO", Address = "321 Maple St", Phone = "111-222-3333", Password = "password4" });
-            customers.Add(new Customer { CustomerID = 5, CompanyName = "Global Services", ContactName = "Clark Kent", ContactTitle = "COO", Address = "654 Cedar St", Phone = "444-555-6666", Password = "password5" });
+            
+            // Thêm nhiều khách hàng ảo hơn
+            customers.Add(new Customer { CustomerID = 1, CompanyName = "ABC Technology Corp", ContactName = "Nguyễn Văn An", ContactTitle = "Giám đốc", Address = "123 Lê Lợi, Q1, TP.HCM", Phone = "0901234567", Password = "123456" });
+            customers.Add(new Customer { CustomerID = 2, CompanyName = "XYZ Trading Ltd", ContactName = "Trần Thị Bình", ContactTitle = "Trưởng phòng kinh doanh", Address = "456 Nguyễn Huệ, Q1, TP.HCM", Phone = "0912345678", Password = "123456" });
+            customers.Add(new Customer { CustomerID = 3, CompanyName = "DEF Solutions", ContactName = "Lê Văn Cường", ContactTitle = "CEO", Address = "789 Điện Biên Phủ, Q3, TP.HCM", Phone = "0923456789", Password = "123456" });
+            customers.Add(new Customer { CustomerID = 4, CompanyName = "GHI Electronics", ContactName = "Phạm Thị Dung", ContactTitle = "CFO", Address = "321 Võ Văn Tần, Q3, TP.HCM", Phone = "0934567890", Password = "123456" });
+            customers.Add(new Customer { CustomerID = 5, CompanyName = "JKL Services", ContactName = "Hoàng Văn Em", ContactTitle = "COO", Address = "654 Pasteur, Q1, TP.HCM", Phone = "0945678901", Password = "123456" });
+            customers.Add(new Customer { CustomerID = 6, CompanyName = "MNO Import Export", ContactName = "Vũ Thị Phương", ContactTitle = "Giám đốc", Address = "987 Hai Bà Trưng, Q1, TP.HCM", Phone = "0956789012", Password = "123456" });
+            customers.Add(new Customer { CustomerID = 7, CompanyName = "PQR Manufacturing", ContactName = "Đỗ Văn Giang", ContactTitle = "Phó giám đốc", Address = "147 Cách Mạng Tháng 8, Q10, TP.HCM", Phone = "0967890123", Password = "123456" });
+            customers.Add(new Customer { CustomerID = 8, CompanyName = "STU Retail", ContactName = "Bùi Thị Hạnh", ContactTitle = "Quản lý", Address = "258 Lý Tự Trọng, Q1, TP.HCM", Phone = "0978901234", Password = "123456" });
+            customers.Add(new Customer { CustomerID = 9, CompanyName = "VWX Logistics", ContactName = "Ngô Văn Ích", ContactTitle = "Trưởng phòng", Address = "369 Trần Hưng Đạo, Q5, TP.HCM", Phone = "0989012345", Password = "123456" });
+            customers.Add(new Customer { CustomerID = 10, CompanyName = "YZ Consulting", ContactName = "Lý Thị Kim", ContactTitle = "Chuyên viên", Address = "741 Nguyễn Thị Minh Khai, Q3, TP.HCM", Phone = "0990123456", Password = "123456" });
+            customers.Add(new Customer { CustomerID = 11, CompanyName = "Alpha Software", ContactName = "Trịnh Văn Long", ContactTitle = "Technical Lead", Address = "852 Võ Thị Sáu, Q3, TP.HCM", Phone = "0901234560", Password = "123456" });
+            customers.Add(new Customer { CustomerID = 12, CompanyName = "Beta Hardware", ContactName = "Đặng Thị Mai", ContactTitle = "Sales Manager", Address = "963 Nguyễn Đình Chiểu, Q3, TP.HCM", Phone = "0912345601", Password = "123456" });
+            customers.Add(new Customer { CustomerID = 13, CompanyName = "Gamma Networks", ContactName = "Phan Văn Nam", ContactTitle = "Network Admin", Address = "159 Lê Văn Sỹ, Q3, TP.HCM", Phone = "0923456012", Password = "123456" });
+            customers.Add(new Customer { CustomerID = 14, CompanyName = "Delta Systems", ContactName = "Cao Thị Oanh", ContactTitle = "System Analyst", Address = "357 Cộng Hòa, Tân Bình, TP.HCM", Phone = "0934560123", Password = "123456" });
+            customers.Add(new Customer { CustomerID = 15, CompanyName = "Epsilon Mobile", ContactName = "Lưu Văn Phúc", ContactTitle = "Mobile Developer", Address = "468 Hoàng Văn Thụ, Tân Bình, TP.HCM", Phone = "0945601234", Password = "123456" });
         }
 
         public List<Customer> GetCustomers()
